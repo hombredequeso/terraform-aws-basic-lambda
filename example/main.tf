@@ -19,15 +19,15 @@ resource "random_id" "id" {
 }
 
 locals  {
-  lambda_name = "${var.lambda_function_name_prefix}-${random_id.id.hex}"
+  lambda_name = "${var.lambda_name_prefix}-${random_id.id.hex}"
 }
 
 module "lambda" {
   source = "../"
 
-  lambda_name = locals.lambda_name
-  lambda_s3_bucket = var.lambda
-  lambda_s3_key = 
+  lambda_name = local.lambda_name
+  lambda_s3_bucket = var.lambda_s3_bucket
+  lambda_s3_key = "${var.lambda_deployment_path}/${var.lambda_deployment_zipfile}"
   common_tags = local.common_tags
 }
 

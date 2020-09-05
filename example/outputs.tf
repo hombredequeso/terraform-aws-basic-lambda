@@ -1,6 +1,6 @@
 output "lambda_name" {
   description = "lambda name"
-  value = locals.lambda_name
+  value = local.lambda_name
 }
 
 output "deployment_bucket" {
@@ -9,15 +9,10 @@ output "deployment_bucket" {
 }
 
 output "deployment_path" {
+  description = "Path within s3 bucket for the deployment zip, not including name of zip itself, or s3 bucket name"
   value = var.lambda_deployment_path
 }
 
 output "deployment_zipfile" {
   value = var.lambda_deployment_zipfile
 }
-
-output "deployment_path" {
-  description = "Path within s3 bucket for the deployment zip, not including name of zip itself, or s3 bucket name"
-  value = var.lambda_deployment_path
-}
-
