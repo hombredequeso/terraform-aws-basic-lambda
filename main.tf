@@ -1,13 +1,9 @@
 resource "aws_lambda_function" "lambda" {
    function_name = var.lambda_name
 
-   # The bucket name as created earlier with "aws s3api create-bucket"
    s3_bucket = var.lambda_s3_bucket
    s3_key    = var.lambda_s3_key
 
-   # "main" is the filename within the zip file (main.js) and "handler"
-   # is the name of the property under which the handler function was
-   # exported in that file.
    handler = "index.handler"
    runtime = "nodejs12.x"
    role = aws_iam_role.lambda_exec.arn
